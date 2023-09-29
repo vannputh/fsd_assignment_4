@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lightskyblue;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 40px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+    #container {
+      background-color: white;
+      border-radius: 5px;
+      padding: 20px;
+      text-align: left;
+    }
+    #container input {
+      width: 92%;
+    }
+    #calculate {
+      text-align: center;
+    }
+    p {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    select, input {
+      font-size: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 5px;
+    }
+    button {
+      font-size: 15px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: lightskyblue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: deepskyblue;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <h1>Welcome to Calculator!</h1>
+  <div>
+    <p>First Number:</p>
+    <input type="number" id="num1" placeholder="Enter first number">
+  </div>
+  <div>
+    <p>Second Number:</p>
+    <input type="number" id="num2" placeholder="Enter second number">
+  </div>
+  <div>
+    <p>Operation:</p>
+    <select id="operation">
+      <option value="add">Addition (+)</option>
+      <option value="subtract">Subtraction (-)</option>
+      <option value="multiply">Multiplication (*)</option>
+      <option value="divide">Division (/)</option>
+    </select>
+  </div>
+  <div id = "calculate">
+    <br><br>
+    <button onclick="calculate()">Calculate</button>
+  </div>
+  <p id="result">Result:</p>
+</div>
+<script>
+  function calculate() {
+    num1 = parseFloat(document.getElementById("num1").value);
+    num2 = parseFloat(document.getElementById("num2").value);
+    operation = document.getElementById("operation").value;
+
+    let result;
+    switch (operation) {
+      case "add":
+        result = num1 + num2;
+        break;
+      case "subtract":
+        result = num1 - num2;
+        break;
+      case "multiply":
+        result = num1 * num2;
+        break;
+      case "divide":
+        if (num2 !== 0) {
+          result = num1 / num2;
+        } else {
+          result = "Division by zero is not allowed";
+        }
+        break;
+      default:
+        result = "Invalid operation";
+    }
+    document.getElementById("result").textContent = "Result: " + result;
+  }
+</script>
+</body>
+</html>
